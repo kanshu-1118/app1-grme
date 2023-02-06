@@ -1,5 +1,22 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+import { useState } from "react"
+
+// export default function handler(req, res) {
+//   res.status(200).json({ name: 'John Doe' })
+// }
+
+export default async function handler(req, res) {
+
+  const APIKEY = `f304caa3812ecfb`
+  const keyword = `野田`
+
+  // const [apikey,setApikey] = useState(`f304caa3812ecfb`)
+  // const [keyword,setKeyword] = useState(`野田`)
+
+
+  const responce = await
+  fetch(`https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=1${APIKEY}&keyword=${keyword}&format=json`)
+  const gourmet = await responce.json()
+  res.status(200).json({gourmet})
 }
